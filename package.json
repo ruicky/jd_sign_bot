@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ruicky/jd_sign_bot#readme",
   "dependencies": {
+    "download": "^8.0.0",
     "superagent": "^5.2.2"
   }
 }

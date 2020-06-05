@@ -5,19 +5,16 @@
 const exec = require('child_process').execSync
 const fs = require('fs')
 const superagent = require('superagent')
+const download = require('download')
 
 // 公共变量
 const KEY = process.env.JD_COOKIE
 const serverJ = process.env.PUSH_KEY
 
 async function downFile () {
-    await superagent.get('https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js').end(async (err,res)=>{
-        if (err) {
-            console.log(err)
-            return
-        }
-        await fs.writeFileSync("./JD_DailyBonus.js",res.body, "binary")
-    })
+    // const url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js'
+    const url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js'
+    await download(url, './')
 }
 
 async function changeFiele () {
