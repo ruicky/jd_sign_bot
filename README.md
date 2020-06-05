@@ -1,4 +1,3 @@
-# 京东自动签到
 <p align="center">
     <img src="https://cdn.jsdelivr.net/gh/ruicky/ruicky.github.io/2020/06/05/jd-sign/0.png">
 </p>
@@ -10,6 +9,7 @@
     </a>
 </p>
 
+# 京东自动签到
 功能：
 1. 获取签到最新代码
 2. 替换参数值
