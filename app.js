@@ -4,7 +4,7 @@
 
 const exec = require('child_process').execSync
 const fs = require('fs')
-const superagent = require('superagent')
+const rp = require('request-promise')
 const download = require('download')
 
 // 公共变量
@@ -24,17 +24,17 @@ async function changeFiele () {
 }
 
 async function sendNotify (text,desp) {
-    try {
-        superagent
-            .post(`https://sc.ftqq.com/${serverJ}.send`)
-            .send({ text, desp })
-            .set('accept', 'json')
-            .end((err, res) => {
-                console.log(err)
-            });
-      } catch (err) {
-        console.error(err);
-      }
+  const options ={
+    uri:  `https://sc.ftqq.com/${serverJ}.send`,
+    form: { text, desp },
+    json: true,
+    method: 'POST'
+  }
+  await rp.post(options).then(res=>{
+    console.log(res)
+  }).catch((err)=>{
+    console.log(err)
+  })
 }
 
 async function start() {
