@@ -11,6 +11,10 @@ const download = require('download')
 const KEY = process.env.JD_COOKIE
 const serverJ = process.env.PUSH_KEY
 
+console.log('公共变量')
+console.log(`'JD_COOKIE= ${KEY}'`)
+console.log(`'PUSH_KEY=${serverJ}'`)
+
 async function downFile () {
     // const url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js'
     const url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js'
@@ -48,9 +52,6 @@ async function start() {
   // 替换变量
   await changeFiele();
   console.log('替换变量完毕')
-  console.log('替换变量的值')
-  console.log('key=', key)
-  console.log('serverJ=', serverJ)
 
   // 执行
   await exec("node JD_DailyBonus.js >> result.txt");
