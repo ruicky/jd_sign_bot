@@ -67,8 +67,8 @@ async function iqiyi_mo() {
           } else {
             const title = '爱奇艺 积分签到 移动端'
             if (res.statusCode == 200) {
-              console.log(JSON.parse(body))
-              let result = JSON.parse(JSON.parse(body).content.m_qiyi_bio_baseline);
+            //   console.log(JSON.parse(body))
+              let result = JSON.parse(JSON.parse(body).content.m_qiyi_bio_baseline.config);
               console.log(`${title} : 今日获取积分:${result.s_s_r},连续签到${result.s_all}`)
               console.log(`爱奇艺总积分:${result.d_c_li}`)
             } else {
