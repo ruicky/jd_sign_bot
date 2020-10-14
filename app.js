@@ -65,11 +65,11 @@ async function jd() {
 
 async function my() {
   // 执行
-  await exec("node src/iqiyi.js >> vedio.txt");
+  await exec("node src/iqiyi.js >> my.txt");
   console.log('爱奇艺执行完毕')
 
   if (serverJ) {
-    const path = "./vedio.txt";
+    const path = "./my.txt";
     let content = "";
     if (fs.existsSync(path)) {
       content = fs.readFileSync(path, "utf8");
@@ -80,7 +80,7 @@ async function my() {
 }
 
 async function start(){
-  await jd()
+  // await jd()
   await my()
 }
 
