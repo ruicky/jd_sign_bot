@@ -1,0 +1,26 @@
+name: my sign bot
+
+on:
+    push:
+        branches:
+            - me
+    schedule:
+        - cron: '5 16 * * *'
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout codes
+              uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                node-version: '12.x'
+            - name: Run app
+              run: npm install
+            - run: node index.js
+              env:
+                IQIYI_COOKIE_PC: ${{ secrets.IQIYI_COOKIE_PC }}
+                IQIYI_COOKIE_MO: ${{ secrets.IQIYI_COOKIE_MO }}
+                PUSH_KEY: ${{ secrets.PUSH_KEY }}
