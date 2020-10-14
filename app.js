@@ -9,6 +9,7 @@ const download = require('download')
 
 // 公共变量
 const KEY = process.env.JD_COOKIE
+const DualKey = process.env.JD_COOKIE2 || ''
 const serverJ = process.env.PUSH_KEY
 
 async function downFile () {
@@ -20,6 +21,9 @@ async function downFile () {
 async function changeFiele () {
    let content = await fs.readFileSync('./JD_DailyBonus.js', 'utf8')
    content = content.replace(/var Key = ''/, `var Key = '${KEY}'`)
+   if (DualKey) {
+      content = content.replace(/var DualKey = ''/, `var DualKey = '${DualKey}'`)
+   }
    await fs.writeFileSync( './JD_DailyBonus.js', content, 'utf8')
 }
 
