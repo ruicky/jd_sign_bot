@@ -37,7 +37,7 @@ async function sendNotify (text,desp) {
   })
 }
 
-async function start() {
+async function jd() {
   if (!KEY) {
     console.log('请填写 key 后在继续')
     return
@@ -61,6 +61,27 @@ async function start() {
     await sendNotify("京东签到-" + new Date().toLocaleDateString(), content);
     console.log('发送结果完毕')
   }
+}
+
+async function my() {
+  // 执行
+  await exec("node src/iqiyi.js >> vedio.txt");
+  console.log('爱奇艺执行完毕')
+
+  if (serverJ) {
+    const path = "./vedio.txt";
+    let content = "";
+    if (fs.existsSync(path)) {
+      content = fs.readFileSync(path, "utf8");
+    }
+    await sendNotify("视频签到-" + new Date().toLocaleDateString(), content);
+    console.log('发送结果完毕')
+  }
+}
+
+async function start(){
+  await jd()
+  await my()
 }
 
 start()
