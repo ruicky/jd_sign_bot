@@ -18,26 +18,30 @@ async function iqiyi_pc() {
     }
   };
   request(options, (err, res, body) => {
-    if (err) {
-      console.log(err)
-    } else {
-      const title = '爱奇艺 积分签到 pc'
-      if (res.statusCode == 200) {
-        // console.log(JSON.parse(body).data[0])
-        let result = JSON.parse(body).data[0]
-        if (result.code == 'A0000') {
-          // 签到
-          console.log(`${title} : ${result.score}`)
-        } else if (result.code == 'A0002') {
-          // 已经签到过
-          console.log(`${title} : ${result.message}`)
-        } else {
-          // 其他
-          console.log(`${title} : ${body}`)
-        }
-      } else {
-        console.log(`${title} : 失败`)
-      }
+    try {
+        if (err) {
+            console.log(err)
+          } else {
+            const title = '爱奇艺 积分签到 pc'
+            if (res.statusCode == 200) {
+              // console.log(JSON.parse(body).data[0])
+              let result = JSON.parse(body).data[0]
+              if (result.code == 'A0000') {
+                // 签到
+                console.log(`${title} : ${result.score}`)
+              } else if (result.code == 'A0002') {
+                // 已经签到过
+                console.log(`${title} : ${result.message}`)
+              } else {
+                // 其他
+                console.log(`${title} : ${body}`)
+              }
+            } else {
+              console.log(`${title} : 失败`)
+            }
+          }
+    } catch (error) {
+        console.log('catch',error)
     }
   })
 }
@@ -57,18 +61,22 @@ async function iqiyi_mo() {
     }
   };
   request(options, (err, res, body) => {
-    if (err) {
-      console.log(err)
-    } else {
-      const title = '爱奇艺 积分签到 移动端'
-      if (res.statusCode == 200) {
-        console.log(JSON.parse(body))
-        let result = JSON.parse(JSON.parse(body).content.m_qiyi_bio_baseline);
-        console.log(`${title} : 今日获取积分:${result.s_s_r},连续签到${result.s_all}`)
-        console.log(`爱奇艺总积分:${result.d_c_li}`)
-      } else {
-        console.log(`${title} : 失败`)
-      }
+    try {
+        if (err) {
+            console.log(err)
+          } else {
+            const title = '爱奇艺 积分签到 移动端'
+            if (res.statusCode == 200) {
+              console.log(JSON.parse(body))
+              let result = JSON.parse(JSON.parse(body).content.m_qiyi_bio_baseline);
+              console.log(`${title} : 今日获取积分:${result.s_s_r},连续签到${result.s_all}`)
+              console.log(`爱奇艺总积分:${result.d_c_li}`)
+            } else {
+              console.log(`${title} : 失败`)
+            }
+          }
+    } catch (error) {
+        console.log('catch',error)
     }
   })
 }
