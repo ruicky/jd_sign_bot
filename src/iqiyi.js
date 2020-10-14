@@ -22,22 +22,22 @@ async function iqiyi_pc() {
         if (err) {
             console.log(err)
           } else {
-            const title = '爱奇艺 积分签到 pc'
+            const title = 'pc'
             if (res.statusCode == 200) {
               // console.log(JSON.parse(body).data[0])
               let result = JSON.parse(body).data[0]
               if (result.code == 'A0000') {
                 // 签到
-                console.log(`${title} : ${result.score}`)
+                console.log(`${title} : ${result.score}\n`)
               } else if (result.code == 'A0002') {
                 // 已经签到过
-                console.log(`${title} : ${result.message}`)
+                console.log(`${title} : ${result.message}\n`)
               } else {
                 // 其他
-                console.log(`${title} : ${body}`)
+                console.log(`${title} : ${body}\n`)
               }
             } else {
-              console.log(`${title} : 失败`)
+              console.log(`${title} : 失败\n`)
             }
           }
     } catch (error) {
@@ -65,12 +65,12 @@ async function iqiyi_mo() {
         if (err) {
             console.log(err)
           } else {
-            const title = '爱奇艺 积分签到 移动端'
+            const title = '移动端'
             if (res.statusCode == 200) {
             //   console.log(JSON.parse(body))
               let result = JSON.parse(JSON.parse(body).content.m_qiyi_bio_baseline.config);
-              console.log(`${title} : 今日获取积分:${result.s_s_r},连续签到${result.s_all}`)
-              console.log(`爱奇艺总积分:${result.d_c_li}`)
+              console.log(`${title} : ${result.s_s_r},连续签到${result.s_all}\n`)
+              console.log(`总积分:${result.d_c_li}\n`)
             } else {
               console.log(`${title} : 失败`)
             }
@@ -90,6 +90,7 @@ async function start(){
     console.log('请填写爱奇艺pc端cookie')
     return
   }
+  console.log('爱奇艺-积分签到\n')
   await iqiyi_pc()
   await iqiyi_mo()
 }
