@@ -10,6 +10,7 @@ const download = require('download')
 // 公共变量
 const KEY = process.env.JD_COOKIE
 const serverJ = process.env.PUSH_KEY
+const iGotKey = process.env.PUSH_IGOT_KEY
 
 async function downFile () {
     // const url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js'
@@ -23,7 +24,8 @@ async function changeFiele () {
    await fs.writeFileSync( './JD_DailyBonus.js', content, 'utf8')
 }
 
-async function sendNotify (text,desp) {
+async function sendScftqqNotify (text,desp) {
+  if(!serverJ) return
   const options ={
     uri:  `https://sc.ftqq.com/${serverJ}.send`,
     form: { text, desp },
@@ -35,6 +37,29 @@ async function sendNotify (text,desp) {
   }).catch((err)=>{
     console.log(err)
   })
+}
+
+async function sendIGotNotify (text,desp) {
+  if(!iGotKey) return
+  const options ={
+    uri:  `https://push.hellyw.com/${iGotKey}`,
+    form: {
+      title: text,
+      content: desp
+    },
+    json: true,
+    method: 'POST'
+  }
+  await rp.post(options).then(res=>{
+    console.log(res)
+  }).catch((err)=>{
+    console.log(err)
+  })
+}
+
+async function sendNotify (text,desp) {
+  await sendScftqqNotify(text,desp)
+  await sendIGotNotify(text,desp)
 }
 
 async function start() {
