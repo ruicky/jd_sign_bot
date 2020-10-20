@@ -14,6 +14,8 @@ const iGotKey = process.env.PUSH_IGOT_KEY
 
 console.log(process.env)
 
+console.log(KEY, serverJ, iGotKey)
+
 async function downFile () {
     // const url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js'
     const url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js'
