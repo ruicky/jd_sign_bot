@@ -12,6 +12,8 @@ const KEY = process.env.JD_COOKIE
 const serverJ = process.env.PUSH_KEY
 const iGotKey = process.env.PUSH_IGOT_KEY
 
+console.log(process.env)
+
 async function downFile () {
     // const url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js'
     const url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js'
