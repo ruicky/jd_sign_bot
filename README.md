@@ -4,4 +4,4 @@
 2. 替换参数值
 3. 签到并发送通知
 详情参考文章:[京东定时签到-GitHub 实现](https://ruicky.me/2020/06/05/jd-sign/)
-京东登录地址：https://plogin.m.jd.com/login/login
+4. 京东登录地址：https://plogin.m.jd.com/login/login
