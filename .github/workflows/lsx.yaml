@@ -19,7 +19,7 @@ jobs:
                 node-version: '12.x'
             - name: Run app
               run: npm install
-            - run: node LSX_app.js
+            - run: node lsx_app.js
               env:
                 LSX_JD_COOKIE: ${{ secrets.LSX_JD_COOKIE }}
                 PUSH_KEY: ${{ secrets.PUSH_KEY }}
