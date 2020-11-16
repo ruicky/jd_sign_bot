@@ -19,7 +19,7 @@ async function downFile () {
     await download(url, './');
 }
 
-async function changeFiele () {
+async function changeFile () {
    let content = await fs.readFileSync('./JD_DailyBonus.js', 'utf8')
    content = content.replace(/var Key = ''/, `var Key = '${KEY}'`);
    if (DualKey) {
@@ -51,7 +51,7 @@ async function start() {
   await downFile();
   console.log('下载代码完毕')
   // 替换变量
-  await changeFiele();
+  await changeFile();
   console.log('替换变量完毕')
   // 执行
   await exec("node JD_DailyBonus.js >> result.txt");
@@ -63,8 +63,13 @@ async function start() {
     if (fs.existsSync(path)) {
       content = fs.readFileSync(path, "utf8");
     }
-    await sendNotify("京东签到-" + new Date().toLocaleDateString(), content);
-    console.log('发送结果完毕');
+    let t = content.match(/【签到概览】:((.|\n)*)【签到总计】/)
+    let res = t ? t[1].replace(/\n/,'') : '失败'
+    let t2 = content.match(/【签到总计】:((.|\n)*)【账号总计】/)
+    let res2 = t2 ? t2[1].replace(/\n/,'') : '总计0'
+
+    
+    await sendNotify("" + ` ${res2} ` + ` ${res} ` + new Date().toLocaleDateString(), content);
   }
 }
 
