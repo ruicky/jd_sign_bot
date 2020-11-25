@@ -16,4 +16,3 @@
 3. 签到并发送通知
 
 详情参考文章:[京东定时签到-GitHub 实现](https://ruicky.me/2020/06/05/jd-sign/)
-获取京东cookies：https://github.com/lxk0301/scripts/blob/master/backUp/GetJdCookie2.md
