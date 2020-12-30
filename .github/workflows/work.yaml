@@ -1,7 +1,6 @@
 name: Github JD-sign bot
 
 on:
-    push:
     schedule:
         - cron: '5 1 * * *'
 
