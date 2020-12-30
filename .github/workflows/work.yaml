@@ -2,10 +2,8 @@ name: Github JD-sign bot
 
 on:
     push:
-        branches:
-            - master
     schedule:
-        - cron: '10 9 * * *'
+        - cron: '5 1 * * *'
 env:
   TZ: Asia/Shanghai
 
