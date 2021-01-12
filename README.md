@@ -20,3 +20,4 @@
 详情参考文章:[京东定时签到-GitHub 实现](https://ruicky.me/2020/06/05/jd-sign/)
 
 2021.1.12  17:42更新cook
+2021.1.12  20:53更新cooks，参考：https://github.com/lxk0301/jd_scripts/blob/master/backUp/GetJdCookie2.md
