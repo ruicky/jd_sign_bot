@@ -1,5 +1,5 @@
 name: Github JD-sign bot
-
+on飒飒多阿萨德
 on:
     push:
         branches:
