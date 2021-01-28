@@ -15,17 +15,17 @@ const DualKey = process.env.JD_COOKIE_2;
 
 async function downFile () {
     // const url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js'
-    const url = 'https://gitee.com/lxk0301/jd_scripts/raw/master/QuantumultX/lxk0301_gallery.json';
+    const url = 'https://raw.githubusercontent.com/NobyDa/Script/master/JD-DailyBonus/JD_DailyBonus.js';
     await download(url, './');
 }
 
 async function changeFile () {
-   let content = await fs.readFileSync('./lxk0301_gallery.js', 'utf8')
+   let content = await fs.readFileSync('./JD_DailyBonus.js', 'utf8')
    content = content.replace(/var Key = ''/, `var Key = '${KEY}'`);
    if (DualKey) {
     content = content.replace(/var DualKey = ''/, `var DualKey = '${DualKey}'`);
    }
-   await fs.writeFileSync( './lxk0301_gallery.js', content, 'utf8')
+   await fs.writeFileSync( './JD_DailyBonus.js', content, 'utf8')
 }
 
 async function sendNotify (text,desp) {
@@ -54,7 +54,7 @@ async function start() {
   await changeFile();
   console.log('替换变量完毕')
   // 执行
-  await exec("node lxk0301_gallery.js >> result.txt");
+  await exec("node JD_DailyBonus.js >> result.txt");
   console.log('执行完毕')
 
   if (serverJ) {
