@@ -13,6 +13,8 @@ jobs:
         steps:
             - name: Checkout codes
               uses: actions/checkout@v2
+              with:
+                ref: 'master'
             - name: Use Node.js
               uses: actions/setup-node@v1
               with:
