@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - master
+    workflow_dispatch: # 手动触发
     schedule:
         - cron: '5 16 * * *'
 jobs:
@@ -13,6 +14,8 @@ jobs:
         steps:
             - name: Checkout codes
               uses: actions/checkout@v2
+              with:
+                ref: 'master'
             - name: Use Node.js
               uses: actions/setup-node@v1
               with:

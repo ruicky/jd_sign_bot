@@ -63,9 +63,9 @@ async function start() {
     if (fs.existsSync(path)) {
       content = fs.readFileSync(path, "utf8");
     }
-    let t = content.match(/【签到概览】:((.|\n)*)【签到总计】/)
+    let t = content.match(/【签到概览】:((.|\n)*)【签到奖励】/)
     let res = t ? t[1].replace(/\n/,'') : '失败'
-    let t2 = content.match(/【签到总计】:((.|\n)*)【账号总计】/)
+    let t2 = content.match(/【签到奖励】:((.|\n)*)【其他奖励】/)
     let res2 = t2 ? t2[1].replace(/\n/,'') : '总计0'
 
     
