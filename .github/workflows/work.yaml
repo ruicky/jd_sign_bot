@@ -7,10 +7,12 @@ on:
     workflow_dispatch: # 手动触发
     schedule:
         - cron: '5 16 * * *'
+    watch:
+      types: started
 jobs:
     build:
         runs-on: ubuntu-latest
-
+        if: github.event.repository.owner.id == github.event.sender.id
         steps:
             - name: Checkout codes
               uses: actions/checkout@v2
