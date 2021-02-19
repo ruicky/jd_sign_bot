@@ -1,6 +1,7 @@
 // version v0.0.2
 // create by ruicky
 // detail url: https://github.com/ruicky/jd_sign_bot
+// 测试
 
 const exec = require('child_process').execSync;
 const fs = require('fs');
@@ -68,7 +69,7 @@ async function start() {
     let t2 = content.match(/【签到奖励】:((.|\n)*)【其他奖励】/)
     let res2 = t2 ? t2[1].replace(/\n/,'') : '总计0'
 
-    
+
     await sendNotify("" + ` ${res2} ` + ` ${res} ` + new Date().toLocaleDateString(), content);
   }
 }
