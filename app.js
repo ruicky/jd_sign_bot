@@ -28,10 +28,10 @@ async function changeFiele () {
    await fs.writeFileSync( './JD_DailyBonus.js', content, 'utf8')
 }
 
-async function sendNotify (text,desp) {
+async function sendNotify (title,desp) {
   const options ={
-    uri:  `https://sc.ftqq.com/${serverJ}.send`,
-    form: { text, desp },
+    uri:  `https://sctapi.ftqq.com/${serverJ}.send`,
+    form: { title, desp },
     json: true,
     method: 'POST'
   }
