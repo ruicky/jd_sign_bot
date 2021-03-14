@@ -28,10 +28,11 @@ async function changeFiele () {
    await fs.writeFileSync( './JD_DailyBonus.js', content, 'utf8')
 }
 
-async function sendNotify (title,desp) {
+async function sendNotify (title,content) {
   const options ={
-    uri:  `http://www.pushplus.plus/send?token=${serverJ}&title=测试&content=哈哈哈`,
-//     form: { 'title':title,'content':desp },
+//     uri:  `http://www.pushplus.plus/send?token=${serverJ}`,
+    uri:  'http://www.pushplus.plus/send?token=' + serverJ,
+    form: { title,content},
     json: true,
     method: 'POST'
   }
