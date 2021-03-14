@@ -30,8 +30,8 @@ async function changeFiele () {
 
 async function sendNotify (title,desp) {
   const options ={
-    uri:  `http://www.pushplus.plus/send?token=${serverJ}`,
-    form: { 'title':title,'content':desp },
+    uri:  `http://www.pushplus.plus/send?token=${serverJ}&title=测试&content=哈哈哈`,
+//     form: { 'title':title,'content':desp },
     json: true,
     method: 'POST'
   }
