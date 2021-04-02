@@ -11,6 +11,8 @@ const download = require('download');
 const KEY = process.env.JD_COOKIE;
 const serverJ = process.env.PUSH_KEY;
 const DualKey = process.env.JD_COOKIE_2;
+const dingdingWebhookUrl = process.env.DINGDING_WEBHOOK_URL;
+const dingdingKeyword = process.env.DINGDING_KEYWORD;
 
 
 async function downFile () {
@@ -27,19 +29,41 @@ async function changeFile () {
    }
    await fs.writeFileSync( './JD_DailyBonus.js', content, 'utf8')
 }
+async function sendNotify(title,content){
+    if (dingdingWebhookUrl) {
+        return sendNotifyDingding(title, content)
+    } else if (serverJ) {
+        return sendNotifyServerJ(title, content)
+    }
 
-async function sendNotify (text,desp) {
+    return Promise.resolve('没有设置任何推送方式')
+}
+
+// server 酱推送
+async function sendNotifyServerJ (text,desp) {
   const options ={
     uri:  `https://sc.ftqq.com/${serverJ}.send`,
     form: { text, desp },
     json: true,
     method: 'POST'
   }
-  await rp.post(options).then(res=>{
-    console.log(res)
-  }).catch((err)=>{
-    console.log(err)
-  })
+  return rp.post(options)
+}
+
+async function sendNotifyDingding (title, desc) {
+    const options = {
+        method: 'POST',
+        uri: dingdingWebhookUrl,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: {
+            'msgtype': 'text',
+            'text': {'content': `[${dingdingKeyword || '未设置钉钉关键词'}]\n${desc}\n${title}`},
+        },
+        json: true,
+    };
+    return rp(options)
 }
 
 async function start() {
@@ -57,20 +81,22 @@ async function start() {
   await exec("node JD_DailyBonus.js >> result.txt");
   console.log('执行完毕')
 
-  if (serverJ) {
-    const path = "./result.txt";
-    let content = "";
+    const path = "./result.txt"
+    let content = ""
     if (fs.existsSync(path)) {
-      content = fs.readFileSync(path, "utf8");
+        content = fs.readFileSync(path, "utf8")
     }
     let t = content.match(/【签到概览】:((.|\n)*)【签到奖励】/)
-    let res = t ? t[1].replace(/\n/,'') : '失败'
+    let res = t ? t[1].replace(/\n/, '') : '失败'
     let t2 = content.match(/【签到奖励】:((.|\n)*)【其他奖励】/)
-    let res2 = t2 ? t2[1].replace(/\n/,'') : '总计0'
+    let res2 = t2 ? t2[1].replace(/\n/, '') : '总计0'
 
-    
-    await sendNotify("" + ` ${res2} ` + ` ${res} ` + new Date().toLocaleDateString(), content);
-  }
+    await sendNotify("" + ` ${res2} ` + ` ${res} ` + new Date().toLocaleDateString(), content).then(res=>{
+        console.log(res)
+    }).catch((err)=>{
+        console.log(err)
+    })
+
 }
 
 start()
