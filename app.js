@@ -59,8 +59,9 @@ async function sendNotifyDingding (title, desc) {
         },
         body: {
             'msgtype': 'text',
-            'text': {'content': `${title} \n\n${desc} \n\n[${dingdingKeyword || '未设置钉钉关键词'}]`},
+            'text': {'content': `[${dingdingKeyword || '未设置钉钉关键词'}]\n${desc}\n${title}`},
         },
+        json: true,
     };
     return rp(options)
 }
