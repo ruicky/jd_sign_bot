@@ -51,16 +51,18 @@ async function sendNotifyServerJ (text,desp) {
 }
 
 async function sendNotifyDingding (title, desc) {
-    const options ={
-        uri:  dingdingWebhookUrl,
-        form: {
+    const options = {
+        method: 'POST',
+        uri: dingdingWebhookUrl,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: {
             'msgtype': 'text',
             'text': {'content': `${title} \n\n${desc} \n\n[${dingdingKeyword || '未设置钉钉关键词'}]`},
         },
-        json: true,
-        method: 'POST'
-    }
-    return rp.post(options)
+    };
+    return rp(options)
 }
 
 async function start() {
