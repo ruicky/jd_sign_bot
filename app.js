@@ -11,6 +11,7 @@ const download = require('download');
 const KEY = process.env.JD_COOKIE;
 const serverJ = process.env.PUSH_KEY;
 const DualKey = process.env.JD_COOKIE_2;
+const addResult =  false;
 
 
 async function downFile () {
@@ -54,7 +55,7 @@ async function start() {
   await changeFile();
   console.log('替换变量完毕')
   // 执行
-  await exec("node JD_DailyBonus.js >> result.txt");
+  await exec(`node JD_DailyBonus.js ${ addResult ? '>>' : '' } result.txt`);
   console.log('执行完毕')
 
   if (serverJ) {
