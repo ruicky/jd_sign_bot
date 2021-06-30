@@ -16,3 +16,6 @@
 3. 签到并发送通知
 
 详情参考文章:[京东定时签到-GitHub 实现](https://ruicky.me/2020/06/05/jd-sign/) 
+
+# changelog
+[2021-6-30 17:00] result.txt记录由追加模式改为覆盖模式，app.js中`addResult`控制记录的追加/覆盖(默认)
