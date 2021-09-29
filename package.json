@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "JD_DailyBonus.js",
+  "type": "module",
   "scripts": {
+    "start": "node app.js",
+    "dev": "KEY=1 serverJ=2 node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +22,7 @@
   "homepage": "https://github.com/ruicky/jd_sign_bot#readme",
   "dependencies": {
     "download": "^8.0.0",
+    "push-all-in-one": "^2.0.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.5"
   }

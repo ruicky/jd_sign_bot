@@ -15,5 +15,15 @@
 2. 替换参数值
 3. 签到并发送通知
 
-详情参考文章:[京东定时签到-GitHub 实现](https://ruicky.me/2020/06/05/jd-sign/)
+详情参考文章:[京东定时签到-GitHub 实现](https://ruicky.github.io/2020/06/05/jd-sign/)
+
+## 简要说明
+
+2.0 参数
+
+|  参数名称 | 参数值  | 参数含义 | 是否必须 |
+|  ----  | ----  | ----  | ----  |
+| PUSH_METHOD  | ServerChanTurbo/CoolPush/Dingtalk/Email/WechatRobot/WechatApp/PushPlus/IGot |  推送方式  |  是  |
+| PUSH_KEY  | -- |  推送key  |  是  |
+| PUSH_SECRET  |  --  | 推送秘钥 |  否  |
 
