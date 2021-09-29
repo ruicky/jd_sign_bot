@@ -1,6 +1,6 @@
 {
   "name": "jd_sign_bot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "JD_DailyBonus.js",
   "type": "module",
